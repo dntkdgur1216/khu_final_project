@@ -22,7 +22,14 @@ mkdir -p logs saved_activations_remoteclip saved_models_remoteclip data/concept_
 
 echo "Running LF-CBM Training with RemoteCLIP..."
 
-# 무슨 버그지? 일단 한줄로 하자
-conda run -n lf_remote_env python train_cbm.py --dataset eurosat_rgb --backbone "remote_clip_vit_b_32" --clip_name 'ViT-B-32' --remote_clip_path "../checkpoints/models--chendelong--RemoteCLIP/snapshots/bf1d8a3ccf2ddbf7c875705e46373bfe542bce38/RemoteCLIP-ViT-B-32.pt" --concept_set "data/concept_sets/eurosat_concepts2.txt" --activation_dir "saved_activations_remoteclip" --save_dir "saved_models_remoteclip" --device cuda
-
+conda run -n lf_remote_env python train_cbm.py \
+    --dataset eurosat_rgb \
+    --backbone "remote_clip_vit_b_32" \
+    --clip_name 'ViT-B-32' \
+    --remote_clip_path "../checkpoints/models--chendelong--RemoteCLIP/snapshots/bf1d8a3ccf2ddbf7c875705e46373bfe542bce38/RemoteCLIP-ViT-B-32.pt" \
+    --concept_set "data/concept_sets/eurosat_concepts2.txt" \
+    --activation_dir "saved_activations_remoteclip" \
+    --save_dir "saved_models_remoteclip" \
+    --device cuda
+    
 echo "Job Finished"
