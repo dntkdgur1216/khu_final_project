@@ -23,9 +23,9 @@ parser.add_argument("--concept_set", type=str, default=None,
                     help="path to concept set name")
 parser.add_argument("--backbone", type=str, default="clip_RN50", help="Which pretrained model to use as backbone")
 parser.add_argument("--clip_name", type=str, default="ViT-B/16", help="Which CLIP model to use")
-###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해
+###########10/14 추가 내용.  lf-cbm에 remoteclip적용을 위해
 parser.add_argument("--remote_clip_path", type=str, default=None, help="Path to the local RemoteCLIP model checkpoint (.pt file)")
-###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해
+###########10/14 추가 내용.  lf-cbm에 remoteclip적용을 위해
 parser.add_argument("--device", type=str, default="cuda", help="Which device to use")
 parser.add_argument("--batch_size", type=int, default=512, help="Batch size used when saving model/CLIP activations")
 parser.add_argument("--saga_batch_size", type=int, default=256, help="Batch size used when fitting final layer")
@@ -70,7 +70,7 @@ def train_cbm_and_save(args):
                                device = args.device, pool_mode = "avg", save_dir = args.activation_dir,
                                remote_clip_path = args.remote_clip_path)
     ###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해   
-    # remote_clip_path = args.remote_clip_path <<< 이거 위에다가 추가했음 원래는 save_dir = args.activation_dir)로 끝
+    # remote_clip_path = args.remote_clip_path <<< 이거 위에다가 추가했음 원래는 save_dir = args.activation_dir로 끝
     target_save_name, clip_save_name, text_save_name = utils.get_save_names(args.clip_name, args.backbone, 
                                                                     args.feature_layer,d_train, args.concept_set, "avg", args.activation_dir)
     val_target_save_name, val_clip_save_name, text_save_name =  utils.get_save_names(args.clip_name, args.backbone,
@@ -111,13 +111,12 @@ def train_cbm_and_save(args):
         image_features = torch.load(clip_save_name, map_location="cpu").float()
         image_features /= torch.norm(image_features, dim=1, keepdim=True)
 
-        # 🌟 [수정 1] text_features를 필터링해서 가져오되, 나중에 초기화에 써야 하므로 변수에 잘 보관합니다.
+        # text_features 필터링후 저장
         text_features = torch.load(text_save_name, map_location="cpu").float()[highest>args.clip_cutoff]
         text_features /= torch.norm(text_features, dim=1, keepdim=True)
     
         clip_features = image_features @ text_features.T
         
-        # 🌟 [수정 2] 여기서 text_features를 del 하지 않습니다! (proj_layer 초기화에 써야 함)
         del image_features 
     
     val_clip_features = val_clip_features[:, highest>args.clip_cutoff]
@@ -126,19 +125,17 @@ def train_cbm_and_save(args):
     proj_layer = torch.nn.Linear(in_features=target_features.shape[1], out_features=len(concepts),
                                  bias=False).to(args.device)
 
-    # 🌟 [핵심 수정 3] Projection Layer 초기화 (Knowledge Injection)
-    # RemoteCLIP의 이미지 특징 차원과 텍스트 임베딩 차원이 같다면 (둘 다 512 등),
-    # 랜덤 초기화 대신 텍스트 임베딩(정답지)을 넣어줍니다.
+    # Projection Layer 초기화 
+    # RemoteCLIP의 이미지 특징 차원과 텍스트 임베딩 차원이 같다면 (둘 다 512. 오류검사),
+    #  정답 메트릭스 집어넣기
     if target_features.shape[1] == text_features.shape[1]:
         print("🚀 [Knowledge Injection] Initializing Projection Layer with RemoteCLIP Text Embeddings...")
         with torch.no_grad():
-            # text_features는 [개념수, 차원] 형태이고, Linear layer weight는 [out_features, in_features]이므로
-            # 차원이 딱 맞습니다. device만 맞춰서 복사합니다.
+            # text_features는 [개념수, 차원] /  Linear layer weight는 [out_features, in_features]
             proj_layer.weight.copy_(text_features.to(args.device))
     else:
-        print(f"⚠️ [Warning] Dimension mismatch (Image: {target_features.shape[1]} vs Text: {text_features.shape[1]}). Using Random Init.")
+        print(f" [Warning] Dimension mismatch (Image: {target_features.shape[1]} vs Text: {text_features.shape[1]}). Using Random Init.")
 
-    # 🌟 [수정 4] 이제 더 이상 필요 없으니 메모리에서 삭제
     del text_features
 
     opt = torch.optim.Adam(proj_layer.parameters(), lr=1e-3)
