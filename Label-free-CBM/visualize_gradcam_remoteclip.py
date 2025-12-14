@@ -62,7 +62,7 @@ rgb_img = cv2.imread(image_path, 1)[:, :, ::-1]
 if rgb_img is None:
     raise FileNotFoundError(f"이미지를 찾을 수 없습니다: {image_path}")
 
-# 리사이징 (224x224)
+# EuroSAT 데이터셋들은 64 * 64 인데 EigenCAM은 224 * 224만 받는것같다. / 리사이징 (224x224)
 rgb_img = cv2.resize(rgb_img, (224, 224))
 print(f"Resized image shape: {rgb_img.shape}") 
 
@@ -80,7 +80,6 @@ grayscale_cam = cam(input_tensor=input_tensor)
 grayscale_cam = grayscale_cam[0, :]
 visualization = show_cam_on_image(rgb_img_float, grayscale_cam, use_rgb=True)
 
-# 저장
 save_path = "EigenCAM_remoteclip_result.png"
 cv2.imwrite(save_path, cv2.cvtColor(visualization, cv2.COLOR_RGB2BGR))
 print(f"Visualization saved to {save_path}")
