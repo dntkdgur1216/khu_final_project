@@ -11,14 +11,12 @@
 #SBATCH -o logs/lfcbm_eurosat-%A.out
 #SBATCH -e logs/lfcbm_eurosat-%A.err
 
+# 11월 중반부터, 실행되는 컴퓨팅 노드를 지정하면 오류가 생기기 시작했다. 그래서 제거함
 echo "Job Started on $(hostname)"
 PROJECT_DIR="/data/dntkdgur1216/repos/final_project/Label-free-CBM"
 
 source /data/dntkdgur1216/anaconda3/etc/profile.d/conda.sh
 # 10/ 22 수정, 가상환경을 lf_remote_env로 변경.
-
-# conda activate lfcbm-env
-# echo "Activated Conda Env: lfcbm-env"
 
 conda activate lf_remote_env
 echo "Activated Conda Env: lf_remote_env"
@@ -42,7 +40,7 @@ python train_cbm.py \
     --dataset 'eurosat_rgb' \
     --backbone 'clip_ViT-B/32' \
     --clip_name 'ViT-B/32' \
-    --concept_set 'data/concept_sets/eurosat_concepts4.txt' \
+    --concept_set 'data/concept_sets/eurosat_concepts2.txt' \
     --activation_dir 'saved_activations' \
     --save_dir 'saved_models' \
     --n_iters 5000 \
