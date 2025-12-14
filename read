@@ -1,2 +1,9 @@
-run_remoteclip.sh는 github readme에 있는, assets의 이미지와 run_test.py로 실행시킨거고
-run_retrieval.sh는 github readme에 있는 retrieval.py를 실행시키기 위함.
+RemoteCLIP 논문의 깃허브 주소
+
+https://github.com/ChenDelong1999/RemoteCLIP
+
+LF-CBM 논문의 깃허브 주소
+
+https://github.com/Trustworthy-ML-Lab/Label-free-CBM
+
+이 둘을 합친 다음, 전체 코드를 세라프에 옮겨서 실행했다
