@@ -11,13 +11,10 @@ from torch.utils.data import DataLoader
 import open_clip 
 
 def load_remote_clip(model_name, checkpoint_path, device="cuda"):
-    """
-    open_clip으로 모델 구조를 만들고, 로컬의 RemoteCLIP 가중치를 씌웁니다.
-    retrieval.py의 get_model 함수 로직을 재사용합니다.
-    """
+    
     model, _, preprocess = open_clip.create_model_and_transforms(
         model_name=model_name,
-        pretrained='openai', # 구조만 가져오기 위해 openai pretrain을 사용
+        pretrained='openai', # 일반 clip 가져오기
         device=device,
         cache_dir='cache/weights/open_clip'
     )
@@ -25,10 +22,9 @@ def load_remote_clip(model_name, checkpoint_path, device="cuda"):
     print(f"Loading RemoteCLIP weights from: {checkpoint_path}")
     checkpoint = torch.load(checkpoint_path, map_location=device)
     
-    # 가중치를 덮어씌웁니다.
     msg = model.load_state_dict(checkpoint)
     print("RemoteCLIP weights loaded successfully.")
-    print(msg) # <All keys matched successfully> 메시지가 뜨는지 확인
+    print(msg)
     
     return model, preprocess
 ###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해
@@ -68,12 +64,10 @@ def save_target_activations(target_model, dataset, save_name, target_layers = ["
     torch.cuda.empty_cache()
     return
 '''
-# utils.py 파일의 save_target_activations 함수를 아래 코드로 교체하세요.
 
 def save_target_activations(target_model, data, save_names, target_layers, device,
                             target_name, batch_size=128):
     
-    # 🌟 [핵심 수정] ViT 모델을 위한 특별 처리 로직 추가
     if 'vit' in target_name:
         print(f"INFO: ViT model detected. Using direct feature extraction (no hooks).")
         all_features = []
@@ -83,13 +77,13 @@ def save_target_activations(target_model, data, save_names, target_layers, devic
                 features = target_model(image_input)
                 all_features.append(features.cpu())
         
-        # ViT는 feature_layer가 하나이므로 target_layers[0]을 사용
+        # ViT는 feature_layer가 하나다. target_layers[0]
         save_name = save_names[target_layers[0]]
         print(f"Saving ViT features to {save_name}")
         torch.save(torch.cat(all_features), save_name)
-        return # ViT의 경우 여기서 함수 종료
+        return # ViT 함수 종료
 
-    # --- 이하 코드는 ResNet 등 다른 모델을 위한 기존 로직 ---
+    # 밑은 ResNet 같은 다른 모델을 위해 기존에 있던 로직을 살림
     all_features = {}
     for layer in target_layers:
         all_features[layer] = []
@@ -158,35 +152,33 @@ def save_activations(clip_name, target_name, target_layers, d_probe,
         
     if _all_saved(save_names):
         return
-    #11/11 토크나이저 추가
     tokenizer = None
     ###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해
-    # 🌟 [핵심 수정] RemoteCLIP 경로 유무에 따라 모델 로딩 방식을 분기합니다.
+    #  RemoteCLIP 경로 유무에 따라 모델 로딩 방식을 다르게
     if remote_clip_path and os.path.exists(remote_clip_path):
         print("--- Using RemoteCLIP model ---")
-        # 1단계에서 추가한 함수를 호출합니다. clip_name은 'ViT-B-32'와 같은 구조 이름입니다.
+        # sh파일에서 썻던 clip_name은 가져오기 'ViT-B-32'같은 구조임
         clip_model, clip_preprocess = load_remote_clip(clip_name, remote_clip_path, device)
-        # 🌟 [수정] open_clip의 토크나이저를 가져옴
         tokenizer = open_clip.get_tokenizer(clip_name)
     else:
         print("--- Using standard OpenAI CLIP model ---")
         clip_model, clip_preprocess = clip.load(clip_name, device=device)
-        # 🌟 [수정] 표준 clip의 토크나이저를 가져옴
+        #  표준 clip의 토크나이저
         tokenizer = clip.tokenize
-    ###########10/14 추가 내용. 10/14는 lf-cbm에 remoteclip적용을 위해
+    ###########10/14 추가 내용완
 
     ##### 10/14 삭제 내용 clip_model, clip_preprocess = clip.load(clip_name, device=device)
     
     if target_name.startswith("clip_"):
         target_model, target_preprocess = clip.load(target_name[5:], device=device)
     #11/11 수정
-    # 1단계에서 보낸 "remote_clip_vit_b_32" 신호를 감지
+    # sh파일에서 "remote_clip_vit_b_32" 
     elif target_name == 'remote_clip_vit_b_32':
         if not remote_clip_path: # --remote_clip_path가 없으면 에러
             raise ValueError("Backbone 'remote_clip_vit_b_32' requires --remote_clip_path")
         
         print("--- Using RemoteCLIP Model as Target Model (for feature extraction) ---")
-        # 🌟 clip_model (RemoteCLIP 전체)을 target_model로 재사용
+        # RemoteCLIP 전체가 타겟 모델
         target_model = clip_model 
         target_preprocess = clip_preprocess
     #11/11 수정끝
@@ -198,7 +190,7 @@ def save_activations(clip_name, target_name, target_layers, d_probe,
 
     with open(concept_set, 'r') as f: 
         words = (f.read()).split('\n')
-    # 🌟 [수정] 하드코딩된 clip.tokenize 대신, 모델에 맞는 'tokenizer' 변수를 사용
+    # 모델에 맞는 tokenizer 변수
     text = tokenizer(["{}".format(word) for word in words]).to(device)
     
     save_clip_text_features(clip_model, text, text_save_name, batch_size)
@@ -206,10 +198,9 @@ def save_activations(clip_name, target_name, target_layers, d_probe,
     save_clip_image_features(clip_model, data_c, clip_save_name, batch_size, device)
     # 11/11 수정시작
     if target_name.startswith("clip_") or target_name == 'remote_clip_vit_b_32':
-        # 🌟 [수정] remote_clip_vit_b_32 신호도 여기서 처리
+        #  remote_clip_vit_b_32만 쓰는 실험이니깐
         print(f"--- Saving CLIP/RemoteCLIP Image Features for {target_name} ---")
-        # 🌟 RemoteCLIP 모델은 encode_image를 사용하므로 이 함수를 호출
-        # (주의: target_layers[0]을 사용)
+        #  target_layers[0]
         save_clip_image_features(target_model, data_t, save_names[target_layers[0]], batch_size, device)
     # 11/11 수정끝
     else:
@@ -304,7 +295,7 @@ def _make_save_dir(save_name):
         os.makedirs(save_dir)
     return
 ########### 10/3 추가 내용
-def get_accuracy_cbm(model, dataset, device, batch_size=250, num_workers=0): # num_workers=0으로 고정
+def get_accuracy_cbm(model, dataset, device, batch_size=250, num_workers=0): # num_workers=0으로 고정, 세라프 특성인가?
     correct = 0
     total = 0
     
@@ -316,9 +307,9 @@ def get_accuracy_cbm(model, dataset, device, batch_size=250, num_workers=0): # n
 
             outs, _ = model(images)
             
-            # 🌟 [핵심 수정] 출력 텐서의 모양을 확인하고, 필요하면 전치(transpose)합니다.
+         음
             if outs.shape[0] != images.shape[0]:
-                outs = outs.T # .T는 .transpose(0, 1)과 같습니다.
+                outs = outs.T 
 
             pred = torch.argmax(outs, dim=1).cpu()
 
