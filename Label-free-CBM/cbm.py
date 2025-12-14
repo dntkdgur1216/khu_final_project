@@ -26,7 +26,7 @@ class CBM_model(torch.nn.Module):
 
         proj_c = self.proj_layer(x_feat)
 
-        # 정규화된 값 사용, evaluate_cbm.ipynb에서 정규화를 한번더 하던가?
+        # 정규화된 값 사용, evaluate_cbm.ipynb에서 정규화 안하는지 확인완료
         proj_c_norm = (proj_c - self.proj_mean) / self.proj_std 
         x = proj_c_norm @ self.final.weight.T + self.final.bias
 
