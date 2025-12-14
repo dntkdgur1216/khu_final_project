@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# --- 작업 스케줄러 설정 (SBATCH) ---
 #SBATCH --job-name=lfcbm_eurosat
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-gpu=8
