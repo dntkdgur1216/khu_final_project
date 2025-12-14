@@ -5,7 +5,7 @@ from torchvision import datasets, transforms, models
 import clip
 from pytorchcv.model_provider import get_model as ptcv_get_model
 
-##추가한 내용 10/13
+##추가한 내용 10/13  데이터셋 EuroSAT 추가가
 import timm
 from torchvision.datasets import EuroSAT
 from torch.utils.data import random_split
@@ -77,7 +77,7 @@ def get_data(dataset_name, preprocess=None):
         full_dataset = EuroSAT(root='./data/eurosat/eurosat', download=True, transform=preprocess)
         train_size = int(0.8 * len(full_dataset))
         val_size = len(full_dataset) - train_size
-        generator = torch.Generator().manual_seed(42) # 항상 동일한 분할을 위해 시드 고정
+        generator = torch.Generator().manual_seed(42) # evaluate_cbm.ipynb에서 동일한 이미지 비교때문에, 항상 동일한 분할을 위해 시드 고정
         train_dataset, _ = random_split(full_dataset, [train_size, val_size], generator=generator)
         data = train_dataset
 
