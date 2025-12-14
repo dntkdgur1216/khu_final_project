@@ -72,7 +72,7 @@ def load_cbm(load_dir, device):
     proj_std = torch.load(os.path.join(load_dir, "proj_std.pt"), map_location=device)
     feature_dim = W_c.shape[1]
     
-    # 🌟 [수정 3] 랜덤 텐서를 만드는 대신, 불러온 W_c 가중치로 실제 nn.Linear 레이어를 생성합니다.
+    #  생성한 W_c 가중치를 불러와  nn.Linear 레이어 생성
     proj_layer = torch.nn.Linear(feature_dim, n_concepts, bias=False)
     proj_layer.weight = torch.nn.Parameter(W_c.clone())
 
