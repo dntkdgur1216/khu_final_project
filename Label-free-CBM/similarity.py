@@ -10,10 +10,10 @@ def cos_similarity_cubed_single(clip_feats, target_feats):
     """
     
     clip_feats = clip_feats.float()
-    # 11/11 수정, 절대적인 평균을위해 주석처리
+    # 11/11 수정, 절대값 평균
     # clip_feats = clip_feats - torch.mean(clip_feats, dim=0, keepdim=True)
     # target_feats = target_feats - torch.mean(target_feats, dim=0, keepdim=True)
-    # 11/11 수정완료, 절대적인 평균을위해 
+    # 11/11 수정완료
     clip_feats = clip_feats**3
     target_feats = target_feats**3
 
