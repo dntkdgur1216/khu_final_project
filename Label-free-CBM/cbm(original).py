@@ -1,4 +1,3 @@
-# cbm.py 파일 전체를 이 내용으로 덮어쓰세요
 import torch
 from tqdm import tqdm
 import torch.nn.functional as F
@@ -19,13 +18,12 @@ class CBM_model(torch.nn.Module):
 
     def forward(self, x):
         x = self.backbone(x)
-        # 🌟 [수정 1] ViT와 호환되지 않는 불필요한 flatten 라인을 제거합니다.
+        # flatten 제거, vit와 호환이 안됨
         # x = torch.flatten(x, 1) 
         x = self.proj_layer(x)
         proj_c = (x-self.proj_mean)/self.proj_std
         
-        # 🌟 [수정 2] 모델 출력이 (클래스 수, 배치 크기)로 뒤집히는 것을 방지하고,
-        # (배치 크기, 클래스 수) 형태로 올바르게 계산합니다.
+        # 모델 출력이 (배치 크기, 클래스 수)로 되게. 이거 없으면 계속 뒤집힘힘
         x = proj_c @ self.final.weight.T + self.final.bias
 
         return x, proj_c
