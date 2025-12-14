@@ -5,7 +5,7 @@ from torchvision import datasets, transforms, models
 import clip
 from pytorchcv.model_provider import get_model as ptcv_get_model
 
-##추가한 내용 10/13  데이터셋 EuroSAT 추가가
+##추가한 내용 10/13  데이터셋 EuroSAT 추가
 import timm
 from torchvision.datasets import EuroSAT
 from torch.utils.data import random_split
@@ -77,7 +77,7 @@ def get_data(dataset_name, preprocess=None):
         full_dataset = EuroSAT(root='./data/eurosat/eurosat', download=True, transform=preprocess)
         train_size = int(0.8 * len(full_dataset))
         val_size = len(full_dataset) - train_size
-        generator = torch.Generator().manual_seed(42) # evaluate_cbm.ipynb에서 동일한 이미지 비교때문에, 항상 동일한 분할을 위해 시드 고정
+        generator = torch.Generator().manual_seed(42) # evaluate_cbm.ipynb에서 동일한 이미지간 비교 때문에, 동일한 분할을 위해 시드 고정
         train_dataset, _ = random_split(full_dataset, [train_size, val_size], generator=generator)
         data = train_dataset
 
@@ -99,13 +99,11 @@ def get_data(dataset_name, preprocess=None):
 
 def get_targets_only(dataset_name):
     pil_data = get_data(dataset_name)
-    # pil_data가 Subset 객체인지 확인합니다.
+    
     if isinstance(pil_data, torch.utils.data.Subset):
-        # 원본 데이터셋(pil_data.dataset)의 targets에서
-        # 이 Subset에 해당하는 인덱스(pil_data.indices)의 타겟만 가져옵니다.
+       
         return [pil_data.dataset.targets[i] for i in pil_data.indices]
     else:
-        # Subset이 아닌 경우 (예: CIFAR10 전체) 기존 방식대로 반환합니다.
         return pil_data.targets
     
 ### 10/13 추가한내용
@@ -142,7 +140,7 @@ def get_target_model(target_name, device):
 
     ### 10/13 추가한내용 
     elif target_name == 'vit_base_patch32_224':
-        # num_classes=0으로 설정하여 모델을 특징 추출기로 만듭니다.
+        
         model = timm.create_model('vit_base_patch32_224', pretrained=True, num_classes=0)
         model.to(device)
         model.eval()
@@ -151,8 +149,6 @@ def get_target_model(target_name, device):
         preprocess = timm.data.create_transform(**config)
 
         target_model = model
-        '''num_classes=0: timm 라이브러리의 특별한 기능입니다. 이렇게 설정하면 모델의 forward 함수 자체가 최종 분류층 직전의 
-        특징 벡터([CLS] 토큰 임베딩)를 바로 반환하도록 변경됩니다. model.head = nn.Identity()와 같은 수동 작업이 필요 없어지며 훨씬 안정적입니다.'''
     ### 10/13 추가한내용 
 
     else:
