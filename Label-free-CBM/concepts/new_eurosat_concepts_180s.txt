@@ -1,0 +1,180 @@
+This image contains patches of bright green.
+A dark green object is present.
+A patch of sandy brown color is in theimage.
+A dark brown patch of earth is visible.
+A body of deep blue water is present.
+A body of light blue water is visible.
+A grey asphalt surface is visible.
+A bright white object is in the image.
+A red or terracotta rooftop is visible.
+A patch of olive green vegetation is visible.
+A smooth texture is visible on the surface.
+A rough texture is seen on the ground.
+A dense cluster of objects is visible.
+A sparse texture with open space is visible.
+A uniform surface texture is present.
+The terrain appears uneven or rough.
+A metallic sheen is reflecting from an object.
+Water ripples are visible on the surface.
+A cracked surface or dry ground is visible.
+The ground appears to be bare soil or dirt.
+A grid-like pattern is visible on the ground.
+A linear object or path is present.
+A curved object or path is visible.
+Striped lines are visible on the ground.
+A dotted pattern from small objects is visible.
+A patchwork layout of fields is visible.
+A circular object or shape is in the image.
+A rectangular building or object is visible.
+A square-shaped object is present.
+A long and narrow object is in the image.
+Plowed soil lines are visible in the field.
+A cultivated field is in the image.
+A farm building is visible.
+A tractor is visible in the field.
+Rows of young plants are visible.
+A patch of bare soil is visible in the field.
+A geometric field boundary is present.
+There are parallel lines in the field.
+A patch of harvested crops is visible.
+An irrigation system is visible.
+A single farm house is in the image.
+The field has a uniform bright color.
+A dirt road is next to the field.
+A group of farm vehicles is present.
+The texture is that of tilled earth.
+Many individual trees are visible.
+A dense canopy of trees is present.
+A shadow is cast by tall trees.
+A clearing in the forest is visible.
+A small river is winding through the trees.
+A dirt path is visible in theforest.
+The treetops create a rough, dotted texture.
+A patch of dark green trees is visible.
+A single tall tree stands out.
+A logged area with cut trees is visible.
+A mix of coniferous and deciduous trees is present.
+A forested hill or mountain is in the image.
+No large buildings are visible in this area.
+A patch of burnt trees is visible.
+A forest road cuts through the trees.
+Low shrubs or bushes are visible.
+A large grassy area is present.
+A patch of bare earth is visible in the grass.
+A single small bush is visible.
+A few scattered trees are present.
+The vegetation is low to the ground.
+No large trees or buildings are in this area.
+A path cuts through the grassy area.
+A rocky outcropping is visible in the field.
+The texture is smooth and grassy.
+A patch of dry, brown grass is visible.
+A gentle slope or hill is covered in grass.
+A small pond or water body is present.
+Wildflowers create a speckled pattern.
+A fence is visible at the edge of the area.
+A multi-lane road is visible.
+A vehicle is visible on the road.
+A large truck is on the highway.
+White lane markings are painted on the road.
+A concrete median or barrier is present.
+A bridge or overpass is visible.
+A highway interchange or junction is present.
+A large paved surface is visible.
+A grey asphalt road is visible.
+A roundabout or traffic circle is present.
+A long, linear road is visible.
+A single car is visible.
+An exit ramp is visible from the highway.
+A sound barrier wall is next to the road.
+A road sign is visible next to the road.
+A large building or warehouse is visible.
+A large parking lot is present.
+Many cars are in the parking lot.
+A large truck is parked.
+A shipping container is visible.
+Many shipping containers are stacked together.
+A large storage tank is visible.
+A factory with a smokestack is present.
+A solar panel array is visible on a roof.
+A wind turbine is in the image.
+A construction site with cranes is visible.
+A power line tower is present.
+A helipad is painted on the ground.
+A rooftop with a metallic sheen is visible.
+A large, flat roof is visible.
+A bright green, grassy field is visible.
+A fence or wall encloses the field.
+A single animal or livestock is visible.
+A herd of animals is grazing.
+A small barn or shed is in the field.
+A small pond or watering hole is present.
+A few scattered trees are in the field.
+A round hay bale is visible.
+A dirt track runs through the field.
+The field appears open and flat.
+A patch of brown grass is in the field.
+A gate is visible in the fence line.
+A feeding trough is visible.
+The texture is that of mown grass.
+A rural house is nearby the field.
+Crops are arranged in neat, distinct rows.
+Rows of trees or large bushes are visible.
+A greenhouse is visible.
+A building, likely a nursery, is present.
+The ground shows a grid-like pattern from planting.
+This field contains tall, permanent plants.
+An irrigation system is visible between the rows.
+A vineyard with rows of vines is visible.
+An orchard of fruit trees is visible.
+The plants create parallel striped lines.
+A support structure for vines is visible.
+A patch of dark green, dense crops is visible.
+A farm building is next to the field.
+A net covering the crops is visible.
+A water channel runs alongside the crops.
+A single house with a yard is visible.
+Many small houses are clustered together.
+A residential street or road is visible.
+A car is parked in a driveway.
+A swimming pool is in a backyard.
+A red or terracotta rooftop is visible.
+Many rooftops are visible.
+A sports field or park is nearby.
+A fence is visible between houses.
+A small garden or yard is visible.
+A large apartment building is present.
+A parking lot for residents is visible.
+A school building is in the area.
+A courtyard is visible between buildings.
+This is a high-density area with many buildings.
+A long, winding body of water is visible.
+A bridge is crossing the water.
+A dam is visible on the river.
+A natural waterway or canal is present.
+A dry riverbed is visible.
+A small boat or ship is on the water.
+A pier or dock is on the riverbank.
+A small island is in the river.
+A curved boundary between water and land is visible.
+Sediment is visible in the water.
+A river delta is visible.
+A narrow channel of water is visible.
+A riverbank with trees is present.
+A sandbar is visible in the water.
+The water body is long and narrow.
+A large, open body of water is visible.
+A coastline or shore is visible.
+A sandy beach is next to the water.
+A large boat or ship is on the open water.
+A port or harbor with docks is visible.
+A pier or dock extends into the water.
+A small island is surrounded by water.
+Waves or water ripples are visible.
+A cliff is next to the water.
+A large enclosed body of water is present.
+The water is deep blue in color.
+The water is light blue and shallow.
+A marina with many small boats isvisible.
+A breakwater or jetty is visible.
+A lighthouse is visible on the coast.

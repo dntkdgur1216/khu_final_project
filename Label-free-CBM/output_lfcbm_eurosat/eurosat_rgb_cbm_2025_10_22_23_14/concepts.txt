@@ -1,0 +1,86 @@
+bright green
+dark green
+dark brown
+deep blue water
+light blue water
+grey asphalt
+white surface
+red or terracotta color
+smooth texture
+rough texture
+grid-like pattern
+linear pattern
+curved pattern
+striped lines
+dotted pattern
+patchwork layout
+dense texture
+sparse texture
+uniform surface
+uneven terrain
+metallic sheen
+water ripples
+plowed soil lines
+circular shape
+rectangular shape
+square outline
+L-shaped structure
+winding path
+straight line
+sharp angles
+curved boundary
+geometric shapes
+symmetrical layout
+long and narrow object
+large continuous area
+a small dot
+a cluster of objects
+a vehicle
+a boat or ship
+an airplane
+a large building
+a single tree
+a bridge
+a wind turbine
+a storage tank
+vegetation
+a body of water
+bare soil or dirt
+sand or a beach
+a rock formation
+snow or ice
+a visible shadow
+a mountain or hill
+a coastline
+a dry riverbed
+a grassy field
+a forest canopy
+low shrubs or bushes
+a small island
+a cliff
+a paved surface
+a rooftop
+an airport runway
+a construction site
+a cultivated field
+a fence or wall
+a port or harbor
+a dam
+a parking lot
+a pier or dock
+a greenhouse
+a roundabout
+a courtyard
+urban area
+suburban area
+rural area
+industrial zone
+agricultural land
+transportation network
+recreational area
+human activity
+high density
+low density
+cracked surface
+glacier
+arid region

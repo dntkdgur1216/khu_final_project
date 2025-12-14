@@ -1,0 +1,20 @@
+{
+  "dataset": "eurosat_rgb",
+  "concept_set": "data/concept_sets/eurosat_concepts4.txt",
+  "backbone": "remote_clip_vit_b_32",
+  "clip_name": "ViT-B-32",
+  "remote_clip_path": "../checkpoints/models--chendelong--RemoteCLIP/snapshots/bf1d8a3ccf2ddbf7c875705e46373bfe542bce38/RemoteCLIP-ViT-B-32.pt",
+  "device": "cuda",
+  "batch_size": 512,
+  "saga_batch_size": 256,
+  "proj_batch_size": 50000,
+  "feature_layer": "layer4",
+  "activation_dir": "saved_activations_remoteclip",
+  "save_dir": "saved_models_remoteclip",
+  "clip_cutoff": 0.25,
+  "proj_steps": 1000,
+  "interpretability_cutoff": 0.45,
+  "lam": 0.0007,
+  "n_iters": 1000,
+  "print": false
+}

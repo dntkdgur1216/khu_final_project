@@ -1,0 +1,7 @@
+torch
+torchvision
+open-clip-torch
+huggingface-hub
+requests
+Pillow
+clip_benchmark
