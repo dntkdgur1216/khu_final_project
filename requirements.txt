@@ -49,8 +49,4 @@ torchaudio==2.4.1+cu121
 torchvision==0.19.1+cu121
 tqdm==4.67.1
 transformers==4.56.2
-triton==3.0.0
-typing_extensions==4.12.2
-tzdata==2025.2
-urllib3==2.5.0
-wcwidth==0.2.14
+triton==임
