@@ -41,8 +41,7 @@ Eurosat-RGB를 불러온다거나, 크기를 늘린다거나 (기본 64*64 이�
 정규화가 2번 일어나는걸 막는다거나, 백본모델을 수정하든가, 모델을 가져올떄 사전 훈련된 체크 포인트 값들을 제대로 적용했는가  
 train할때 백본 모델을 제대로 freeze를 했는가 등등  
 모델의 논리 구조를 수정했다.  
-cbm.py, data_utils.py, evaluate_cbm-clip.ipynb, evaluate_cbm-remoteclip.ipynb, similarity.py,  
-train_cbm.py, utils.py 가 주된 수정 파일이다.  
+Label-free-CBM/  cbm.py, data_utils.py, evaluate_cbm-clip.ipynb, evaluate_cbm-remoteclip.ipynb, similarity.py, train_cbm.py, utils.py가 주된 수정 파일이다.  
 
 이후는 데이터셋을 바꿔가면서 실행했다.  
 
