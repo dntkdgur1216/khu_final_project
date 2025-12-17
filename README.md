@@ -56,3 +56,5 @@ Label-free-CBM/data/concept_sets/eurosat_concepts2.txt가 사용한 concept set�
 기본적으로 주어, 동사, 목적어/보어, 수식어를 갖춘 문장 + 전치사를 사용해 객체 간의 위치 관계를 표현 +  
 하나의 이미지에 대해 서로 다른 5개의 표현으로 학습되는 특성이 있기에, 이 방법으로는 생성 프롬프트의 개선이 더 필요했다.  
 정확도는 제법 높게 나왔으나, 핵심 근거로 든 개념이 마음에 들지 않아 단어/구 형태로 다시 돌아갔다.  
+
+![Project Poster](./poster_preview.jpg)  
