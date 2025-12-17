@@ -5,7 +5,7 @@
 언어: Python 3.9  
 핵심 프레임워크: PyTorch 2.4.1 + CUDA 12.1  
 모델:  
-RemoteCLIP, open-clip-torch 3.2.0 라이브러리를 통해 구현된 ViT-B/32를 불러온다음 해당 논문으로부터 사전 학습된 가중치(Checkpoint)를 로드하여 사용했다.      
+RemoteCLIP, open-clip-torch 3.2.0 라이브러리를 통해 구현된 ViT-B/32를 불러온 후 해당 논문으로부터 사전 학습된 가중치(Checkpoint)를 로드하여 사용했다.      
 OpenAI CLIP, open-clip-torch 3.2.0  
 
 백본모델: ViT-B/32 (Vision Transformer Base-Patch32)    
