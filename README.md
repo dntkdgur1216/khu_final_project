@@ -5,8 +5,9 @@
 언어: Python 3.9  
 핵심 프레임워크: PyTorch 2.4.1 + CUDA 12.1  
 모델:  
-- RemoteCLIP, open-clip-torch 3.2.0 라이브러리 활용  
-- OpenAI CLIP, 일반 CLIP 모델 활용  
+RemoteCLIP, open-clip-torch 3.2.0 라이브러리 활용  
+OpenAI CLIP, 일반 CLIP 모델 활용  
+
 백본모델: ViT-B/32 (Vision Transformer Base-Patch32)  
 개념 생성: GPT  
 개념 분석: Scikit-learn 1.6.1 (Concept Bottleneck Layer 구현)  
