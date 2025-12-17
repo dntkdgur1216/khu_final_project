@@ -50,6 +50,8 @@ Label-free-CBM/ cbm.py, data_utils.py, similarity.py, train_cbm.py, utils.py, ev
 
 Label-free-CBM/data/concept_sets/eurosat_concepts2.txt가 사용한 concept set이다.  
 원래는 100개였는데 실험을 진행하면서 필터링했다.
+
+[![Poster Preview](./poster_preview.jpg)](./poster.pdf)
 개념 데이터 셋 개수를 늘리면 정확도가 올라가기는 하는데 정작 핵심 근거로 선택한 개념의 질이 낮아져서 개념 개수를 낮게 잡았다.
 일반적인 단어/구 형태말고 UCM_captions 형태를 가진 개념 셋도 만들어서 실험을 해보았는데,    
 기본적으로 주어, 동사, 목적어/보어, 수식어를 갖춘 문장 + 전치사를 사용해 객체 간의 위치 관계를 표현 +  
