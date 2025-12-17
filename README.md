@@ -1,5 +1,7 @@
-본 연구에서는 ViT-B/32 아키텍처를 기반으로 한 OpenAI CLIP과 위성 도메인에 특화된 RemoteCLIP 두 가지 모델의 성능과 설명 가능성을 비교 분석하는 것을 목표로 합니다.     
-이를 위해 Label-Free Concept Bottleneck Model을 적용하였으며, 이를 통해 각 모델이 위성 이미지를 분류할 때 어떤 개념(Concept)을 핵심 근거로 삼는지 시각화하고 분석하였습니다.    
+본 연구에서는 ViT-B/32 아키텍처를 기반으로 한 OpenAI CLIP과 위성 도메인에 특화된 RemoteCLIP  
+두 가지 모델의 성능과 설명 가능성을 비교 분석하는 것을 목표로 합니다.  
+이를 위해 Label-Free Concept Bottleneck Model을 적용하였으며, 이를 통해 각 모델이 위성 이미지를 분류할 때  
+어떤 개념(Concept)을 핵심 근거로 삼는지 시각화하고 분석하였습니다.  
 데이터셋은 EuroSAT-RGB를 사용하였습니다.  
 
 사용한 데이터셋 EuroSAT-RGB 주소  
