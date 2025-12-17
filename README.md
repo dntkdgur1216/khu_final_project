@@ -21,7 +21,7 @@ https://github.com/Trustworthy-ML-Lab/Label-free-CBM
 RemoteCLIP, open-clip-torch 3.2.0 라이브러리를 통해 구현된 ViT-B/32를 불러온 후 RemoteCLIP 논문으로부터 사전 학습된 가중치(Checkpoint)를 로드하여 사용했습니다.  
 OpenAI CLIP, open-clip-torch 3.2.0  
 
-백본모델: ViT-B/32 (Vision Transformer Base-Patch32)  
+백본모델: ViT-B/32 (Vision Transformer Base-Patch32)  / clip_ViT-B/32과 remote_clip_vit_b_32로 구분.
 개념 생성: GPT-4 (Concept Set 생성)  
 개념 분석: Scikit-learn 1.6.1 (Concept Bottleneck Layer 구현)  
   
