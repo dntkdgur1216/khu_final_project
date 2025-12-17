@@ -47,7 +47,7 @@ Label-free-CBM/ cbm.py, data_utils.py, similarity.py, train_cbm.py, utils.py, ev
 이후는 concept set을 최적화하는 과정을 거쳤습니다.  
 
 초기 100개의 개념에서 시작하여 필터링 과정을 거쳐 최종적으로  
-Label-free-CBM/data/concept_sets/eurosat_concepts2.txt를 확정하였습니다.  
+Label-free-CBM/data/concept_sets/eurosat_concepts.txt를 확정하였습니다.  
 
 개념의 개수를 무작정 늘리면 분류 정확도는 상승하지만, 설명력 측면에서 핵심 근거의 질이 하락하는 트레이드오프를 확인하였습니다.  
 따라서 가장 직관적인 설명력을 제공하는 최적의 개수로 설정하였습니다.  
