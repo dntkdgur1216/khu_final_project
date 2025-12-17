@@ -23,9 +23,9 @@ RemoteCLIP: 논문에서 제공된 사전 학습된 가중치를 로드하여 �
 OpenAI CLIP: open-clip-torch 3.2.0 라이브러리를 통해 OpenAI 공식 사전 학습 가중치를 로드하여 사용하였습니다.
 
 백본모델: ViT-B/32 (Vision Transformer Base-Patch32)  / clip_ViT-B/32과 remote_clip_vit_b_32로 구분됩니다.  
-clip_ViT-B/32: open-clip-torch를 통해 Standard OpenAI CLIP의 가중치를 그대로 사용하였습니다.  
 remote_clip_vit_b_32: open-clip-torch로 ViT-B/32 구조를 생성한 후,   
-사전 학습된 가중치 (RemoteCLIP-VIT-B-32.pt)를 로드하여 이미지 인코더 가중치를 교체하였습니다.  
+사전 학습된 가중치 (RemoteCLIP-VIT-B-32.pt)를 로드하여 이미지 인코더 가중치를 교체하였습니다.    
+clip_ViT-B/32: open-clip-torch를 통해 Standard OpenAI CLIP의 가중치를 그대로 사용하였습니다.   
 
 개념 생성: GPT-4 (Concept Set 생성)  
 개념 분석: Scikit-learn 1.6.1 (Concept Bottleneck Layer 구현)  
