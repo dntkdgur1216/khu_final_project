@@ -5,15 +5,19 @@
 언어: Python 3.9  
 핵심 프레임워크: PyTorch 2.4.1 + CUDA 12.1  
 모델:  
-RemoteCLIP, open-clip-torch 3.2.0 라이브러리 활용  
-OpenAI CLIP, 일반 CLIP 모델 활용  
-
-백본모델: ViT-B/32 (Vision Transformer Base-Patch32)  
+RemoteCLIP, open-clip-torch 3.2.0 라이브러리를 통해 구현된 ViT-B/32를 불러온다음     
+해당 논문으로부터 사전 학습된 가중치(Checkpoint)를 로드하여 사용했다.    
+OpenAI CLIP, open-clip-torch 3.2.0  
+백본모델: ViT-B/32 (Vision Transformer Base-Patch32)    
 개념 생성: GPT  
 개념 분석: Scikit-learn 1.6.1 (Concept Bottleneck Layer 구현)  
-이미지: PIL (Pillow) - Resizing & Loading  
+  
+생성된 가중치파일은 Label-free-CBM/ evaluate_cbm-clip.ipynb, evaluate_cbm-remoteclip.ipynb에서 성능이 평가된다.  
+  
+이미지: PIL - Resizing & Loading  
 데이터 전처리: Pandas 2.0.3, Numpy 1.26.3  
-시각화: Matplotlib (Bar Plot), IPython (이미지 렌더링)  
+시각화: Matplotlib, IPython (이미지 렌더링)  
+
 
 보다 자세한 건 requirements.txt에 있음
 
