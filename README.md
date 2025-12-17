@@ -8,6 +8,7 @@
 RemoteCLIP, open-clip-torch 3.2.0 라이브러리를 통해 구현된 ViT-B/32를 불러온다음     
 해당 논문으로부터 사전 학습된 가중치(Checkpoint)를 로드하여 사용했다.    
 OpenAI CLIP, open-clip-torch 3.2.0  
+
 백본모델: ViT-B/32 (Vision Transformer Base-Patch32)    
 개념 생성: GPT  
 개념 분석: Scikit-learn 1.6.1 (Concept Bottleneck Layer 구현)  
